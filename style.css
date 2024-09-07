@@ -1,7 +1,9 @@
 html,
-* {
-	background-color: #000 !important;
-	color: green !important;
+body,
+input,
+button {
+	background-color: #000;
+	color: green;
 }
 
 .flex-col {

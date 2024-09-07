@@ -1,16 +1,56 @@
-todo_list = [];
 function add() {
 	//task=$('#task')
 	task = document.getElementById("task")
-	console.log(task)
 	val = task.value
-	todo_list.push(val)
-	console.log(todo_list)
-	insertDiv(val)
-	task.value = ''
+	if (val.length != 0) {
+
+		insertDiv(val)
+		task.value = ''
+	}
+}
+window.onclick = e => {
+	if (e.target.nodeName == "svg") {
+		console.log(e.target.parentNode);
+		e.target.parentNode.remove()
+	} else if (e.target.nodeName == "path") {
+
+		console.log(e.target.parentNode);
+		e.target.parentNode.parentNode.remove()
+	}
+}
+
+function delete_task() {
+
 }
 
 function insertDiv(val) {
-	//$("#results").append('<div role="alert" class="alert alert-info my-5"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="h-6 w-6 shrink-0 stroke-current"> <path stroke-linecap="round" stroke-linejoin="round"stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg> <span>'+val+'</span> </div>')
-	document.createElement('div')
+	const task = document.createElement("p");
+	task.style.textAlign = "center"
+	const text = document.createTextNode(val);
+	task.appendChild(text);
+
+
+	const task_container = document.createElement('div')
+	var svg = document.createElementNS("http://www.w3.org/2000/svg", 'svg');
+	var newElement = document.createElementNS("http://www.w3.org/2000/svg", 'path');
+	newElement.setAttribute("d", "M9 9L15 15M15 9L9 15");
+	newElement.style.stroke = "red";
+	newElement.style.strokeWidth = "2px";
+	svg.appendChild(newElement);
+	svg.style.width = "30px"
+	svg.style.height = "30px"
+	svg.onclick = function() { }
+
+	task_container.appendChild(svg)
+	task_container.appendChild(task)
+	task_container.style.cssText = `
+		background-color: green;
+		color: black;
+		display: flex;
+		flex-direction: row;
+		margin-top: 20px;
+		margin-bottom: 20px;
+	`
+	const results = document.getElementById("results")
+	results.appendChild(task_container)
 }
