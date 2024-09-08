@@ -1,36 +1,14 @@
-html,
-body,
-input,
-button {
-	background-color: #000;
-	color: green;
+* {
+	background-color: #000 !important;
+	color: green !important;
 }
 
-.flex-col {
-	flex-direction: column;
+#task,
+#add {
+	border: 1px solid green;
+	color: green !important;
 }
 
-.flex {
-	display: flex;
-}
-
-.mt-20 {
-	margin-top: 5rem !important;
-}
-
-.mt-10 {
-	margin-top: 2.5rem !important;
-}
-
-.mx-auto {
-	margin-left: auto;
-	margin-right: auto;
-}
-
-.w-full {
-	width: 100%;
-}
-
-.w-1\/3 {
-	width: 33%;
+input::placeholder {
+	color: green !important;
 }
