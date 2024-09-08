@@ -27,6 +27,7 @@ function insertDiv(val) {
 	const task = document.createElement("p");
 	task.style.textAlign = "center"
 	task.style.margin = "auto"
+	task.style.overflowWrap = "anywhere"
 	const text = document.createTextNode(val);
 	task.appendChild(text);
 
@@ -48,6 +49,7 @@ function insertDiv(val) {
 	svg.onclick = function() { }
 	svg.setAttribute("viewBox", "5 5 14 14");
 	svg.setAttribute("width", "30px");
+	svg.style.margin = "auto";
 
 	inner_container.appendChild(svg)
 	inner_container.appendChild(task)
