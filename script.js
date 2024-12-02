@@ -1,17 +1,16 @@
 function getLocalStorage() {
 
 	const items = { ...localStorage };
-	console.log(items)
 	return items
 }
 function getTodo() {
 	items = getLocalStorage()
 	for (const [key, value] of Object.entries(items)) {
+
 		insertDiv(value)
 	}
 }
 function add() {
-	//task=$('#task')
 	task = document.getElementById("task")
 	val = task.value
 	if (val.length != 0) {
@@ -20,27 +19,39 @@ function add() {
 		task.value = ''
 	}
 }
+
+window.addEventListener('mouseover', (e) => {
+	if (e.target.nodeName == "svg" || e.target.nodeName == "path") {
+
+		const parentDiv = e.target.closest('path');
+		if (parentDiv) {
+			parentDiv.style.stroke = "red";
+		}
+	}
+})
+
+window.addEventListener('mouseout', (e) => {
+	if (e.target.nodeName == "svg" || e.target.nodeName == "path") {
+
+		const parentDiv = e.target.closest('path');
+		if (parentDiv) {
+			parentDiv.style.stroke = "green"; // Change background color on hover
+		}
+	}
+})
 window.onclick = e => {
 	if (e.target.nodeName == "svg") {
-		//console.log(e.target.parentNode.childNodes[1]);
-		console.log(e.target.parentNode.childNodes[1].innerHTML);
 		key = e.target.parentNode.childNodes[1].innerHTML;
 		localStorage.removeItem(key)
 		e.target.parentNode.remove()
 	} else if (e.target.nodeName == "path") {
 
-		//console.log(e.target.parentNode.parentNode.childNodes[1]);
-		console.log(e.target.parentNode.parentNode.childNodes[1].innerHTML);
 		key = e.target.parentNode.parentNode.childNodes[1].innerHTML;
 		localStorage.removeItem(key)
-		//console.log(e.target.parentNode);
 		e.target.parentNode.parentNode.remove()
 	}
 }
 
-function delete_task() {
-
-}
 
 function insertDiv(val) {
 	const task = document.createElement("p");
@@ -74,8 +85,7 @@ function insertDiv(val) {
 	inner_container.appendChild(task)
 	task_container.appendChild(inner_container)
 	task_container.style.cssText = `
-		background-color: green;
-		color: black;
+		color: green;
 		display: flex;
 		flex-direction: row;
 		margin-top: 20px;
@@ -83,7 +93,7 @@ function insertDiv(val) {
 		margin-left: auto;
 	`
 	const results = document.getElementById("results")
-	console.log(task)
 	results.appendChild(task_container)
 }
+
 getTodo()

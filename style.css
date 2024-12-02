@@ -1,6 +1,15 @@
-* {
-	background-color: #000 !important;
-	color: green !important;
+/** {*/
+/*	background-color: #000 !important;*/
+/*	color: green !important;*/
+/*}*/
+
+body {
+	background-image: url('https://upload.wikimedia.org/wikipedia/commons/c/cc/Digital_rain_animation_medium_letters_shine.gif') !important;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+	height: 100vh;
+	margin: 0;
 }
 
 #task,
@@ -11,4 +20,25 @@
 
 input::placeholder {
 	color: green !important;
+}
+
+#add,
+input {
+	background-color: black !important;
+}
+
+#add:hover {
+	border: 1px solid #0a460a;
+}
+
+#title {
+	color: green;
+}
+
+#title:hover {
+	color: #0a460a !important;
+}
+
+#title:hover::after {
+	color: #0a460a;
 }
